@@ -2,11 +2,11 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>sam</groupId>
-    <artifactId>crf_2.10.1</artifactId>
+    <artifactId>defacto_2.10.1</artifactId>
     <packaging>jar</packaging>
     <description>crf</description>
     <version>0.1-SNAPSHOT</version>
-    <name>citationcrf</name>
+    <name>defacto</name>
     <organization>
         <name>sam</name>
     </organization>
@@ -84,6 +84,11 @@
             <groupId>org.jblas</groupId>
             <artifactId>jblas</artifactId>
             <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scalanlp</groupId>
+            <artifactId>breeze_2.10</artifactId>
+            <version>0.10</version>
         </dependency>
     </dependencies>
     <repositories>

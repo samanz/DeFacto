@@ -1,4 +1,4 @@
-package sam.crf
+package defacto.crf
 
 import scala.collection.mutable.ArrayBuffer
 class SumProduct(chain : Chain) {

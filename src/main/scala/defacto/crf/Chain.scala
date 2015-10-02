@@ -1,4 +1,4 @@
-package sam.crf
+package defacto.crf
 
 import scala.io.Source
 import scala.collection.mutable.ArrayBuffer

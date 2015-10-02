@@ -1,4 +1,4 @@
-package sam.crf
+package defacto.crf
 
 import org.scalatest.{FlatSpec, Matchers}
 import scala.util.Random
@@ -8,8 +8,8 @@ import scala.util.Random
  */
 class WeightsSpec extends FlatSpec with Matchers {
   "Weights" should "store and retrieve weights in the same order" in {
-    val featuresDomain = new FeaturesDomain("featuresDomain")
-    val labelDomain = new LabelDomain(10)
+    val featuresDomain = new FeaturesDomain[String]
+    val labelDomain = new LabelDomain
     val weights = new Weights(featuresDomain, labelDomain)
     println("Weights length:" + weights.getWeights.length)
     val wArray = (0 until weights.getWeights.length).map(_.toDouble).toArray

@@ -1,4 +1,7 @@
-package sam.crf
+package defacto.crf
+
+import breeze.collection.mutable.SparseArray
+import breeze.linalg.SparseVector
 
 /**
  * Created by samanzaroot on 9/23/14.
@@ -18,7 +21,7 @@ class IntValue[IntDomain](val domain : IntDomain)
 class RealValue[RealDomain](val domain : RealDomain)
 
 class LabelValue[L <: LabelDomain](domain : L) extends DiscreteValue[L](domain) {
-  var value = new OneHotVector(domain.length)
+  var value = new SparseVector[Double](new SparseArray[Double]())
   var targetValue = new OneHotVector(domain.length)
   def category = domain.labels(value.index)
   val targetCategory = domain.labels(targetValue.index)

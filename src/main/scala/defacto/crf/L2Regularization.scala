@@ -1,4 +1,4 @@
-package sam.crf
+package defacto.crf
 
 trait Regularization {
   def regularizationLikelihood(weights : Weights) : Double

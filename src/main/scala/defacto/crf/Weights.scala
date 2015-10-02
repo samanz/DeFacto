@@ -1,6 +1,8 @@
-package sam.crf
+package defacto.crf
 
 import java.util
+import breeze.linalg.{Tensor, DenseMatrix, DenseVector}
+
 import scala.reflect.runtime.universe._
 import edu.umass.nlp.ml.feats.WeightsManager
 
@@ -11,7 +13,7 @@ import scala.io.Source
 /**
  * Created by samanzaroot on 9/19/14.
  */
-abstract class Vector extends Seq[Double] {
+/*abstract class Vector extends Seq[Double] {
   def +=(o : Vector): Unit = {
     assert(o.length == this.length, "Vector lengths must match for addition")
     (0 until length).map( i => this.add(i,o(i)) )
@@ -466,27 +468,27 @@ class SparseBinaryVector1(dim : Int) extends SparseVector1(dim) {
   def update(i : Int) : Unit = {
     super.update(i,1.0)
   }
-}
+}*/
 
 class Weights(val model : Model) {
-  val factorWeights = new Array[Vector](model.families.size)
+  val factorWeights = new Array[Tensor](model.families.size)
   var activeWeights = 0
   for(fam <- model.families) fam match {
     case f : Family1 => {
-      factorWeights(activeWeights) = new DenseVector1(f.dim1)
+      factorWeights(activeWeights) = new DenseMatrix[Double](f.dim1, 1)
       f.weightIndex = activeWeights
       activeWeights += 1
     }
     case f : Family2 => {
-      factorWeights(activeWeights) = new DenseVector2(f.dim1, f.dim2)
+      factorWeights(activeWeights) = new DenseMatrix[Double](f.dim1, f.dim2)
       f.weightIndex = activeWeights
       activeWeights += 1
     }
-    case f : Family3 => {
+    /*case f : Family3 => {
       factorWeights(activeWeights) = new DenseVector3(f.dim1, f.dim2, f.dim3)
       f.weightIndex = activeWeights
       activeWeights += 1
-    }
+    }*/
   }
   def apply(i : Int) = factorWeights(i)
 }

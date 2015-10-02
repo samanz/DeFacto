@@ -1,4 +1,4 @@
-package sam.crf
+package defacto.crf
 
 import edu.umass.nlp.optimize.{IDifferentiableFn, CachingDifferentiableFn, LBFGSMinimizer}
 import edu.umass.nlp.utils.{BasicPair, IPair}

@@ -1,4 +1,6 @@
-package sam.crf
+package defacto.crf
+
+import breeze.linalg.{Vector, SparseVector}
 
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
@@ -35,7 +37,7 @@ class FeaturesDomain[F] extends DiscreteDomain[F] {
   def length = values.length
   val reverseMap = new mutable.HashMap[F, Int]()
   var _frozen = false
-  override type inner = SparseBinaryVector1
+  override type inner = SparseVector[Int]
 
   def apply(i : Int) : F = {
     values(i)
@@ -119,7 +121,7 @@ class DoubleIndexedFeatureDomain extends FeaturesDomain[String] {
 class StringFeaturesDomain[String] extends FeaturesDomain[String] {
   def +=(feature : String, value : String) : Unit = {
     val s = feature + ":+:" + value
-    super.+=(s)
+    super.+=(s.asInstanceOf[String]) //TODO: Is this a intellij problem or scala?
   }
 }
 
@@ -132,5 +134,5 @@ class LabelDomain extends DiscreteDomain[String] {
   def initialize(till : Int): Unit = {
     values ++= (0 until till).map(_.toString).toArray
   }
-  override type inner = OneHotVector
+  override type inner = SparseVector[Double]
 }
